@@ -120,7 +120,6 @@ func (out *httpOutput) init(beat beat.Info, c config) error {
 	out.reqPool = sync.Pool{
 		New: func() interface{} {
 			req, err := http.NewRequest("POST", out.conf.URL, nil)
-			req.Header.Add("Content-Type":"application/json")
 			if err != nil {
 				return err
 			}
@@ -278,6 +277,7 @@ func (out *httpOutput) getReq(data []byte) (*http.Request, error) {
 		buf := bytes.NewBuffer(data)
 		req.Body = ioutil.NopCloser(buf)
 		req.Header.Set("User-Agent", "beat "+out.beat.Version)
+		req.Header.Set("Content-Type", "application/json")
 		if out.conf.Username != "" {
 			req.SetBasicAuth(out.conf.Username, out.conf.Password)
 		}
