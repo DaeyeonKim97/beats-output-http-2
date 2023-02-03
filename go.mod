@@ -1,4 +1,4 @@
-module github.com/crazygreenpenguin/beats-output-http
+module github.com/DaeyeonKim97/beats-output-http-2
 
 go 1.14
 
