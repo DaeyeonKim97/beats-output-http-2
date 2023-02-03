@@ -201,9 +201,9 @@ func (out *httpOutput) serializeOnlyFields(event *publisher.Event) ([]byte, erro
 	fields["rsvd"] = slice[27]
 
 	if len(slice) > 28{
-		fields["dur"] = [29]
-		fields["pkts"] = [31]
-		fields["bytes"] = [33]
+		fields["dur"] = slice[29]
+		fields["pkts"] = slice[31]
+		fields["bytes"] = slice[33]
 	}
 
 
