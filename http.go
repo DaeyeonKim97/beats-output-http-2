@@ -199,8 +199,8 @@ func (out *httpOutput) serializeOnlyFields(event *publisher.Event) ([]byte, erro
 	fields["invalidOrDash"] = slice[24]
 	fields["tcpflags"] = slice[25]
 	fields["rsvd"] = slice[27]
-	
-	if slice.len > 28{
+
+	if len(slice) > 28{
 		fields["dur"] = [29]
 		fields["pkts"] = [31]
 		fields["bytes"] = [33]
