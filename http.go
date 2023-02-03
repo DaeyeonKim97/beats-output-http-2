@@ -277,7 +277,7 @@ func (out *httpOutput) getReq(data []byte) (*http.Request, error) {
 		buf := bytes.NewBuffer(data)
 		req.Body = ioutil.NopCloser(buf)
 		req.Header.Set("User-Agent", "beat "+out.beat.Version)
-		req.Header.Set("Content-Type", "application/json")
+		req.Header.Add("Content-Type", "application/json")
 		if out.conf.Username != "" {
 			req.SetBasicAuth(out.conf.Username, out.conf.Password)
 		}
