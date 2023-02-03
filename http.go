@@ -5,7 +5,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/DaeyeonKim97/beats-output-http-2/v1/resolver"
+	"github.com/DaeyeonKim97/beats-output-http-2/resolver"
 	"github.com/elastic/beats/v7/libbeat/beat"
 	"github.com/elastic/beats/v7/libbeat/common"
 	"github.com/elastic/beats/v7/libbeat/logp"
@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"sync"
 	"time"
+	"strings"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
@@ -177,6 +178,35 @@ func (out *httpOutput) serializeOnlyFields(event *publisher.Event) ([]byte, erro
 	for key, val := range out.conf.AddFields {
 		fields[key] = val
 	}
+	body := fields.GetValue("body")
+
+	slice := strings.Split(body, " ")
+
+	fields["ifindex"] = slice[3]
+	fields["actionCode"] = slice[4]
+	fields["aclTag"] = slice[6]
+	fields["ruleDesc"] = slice[8]
+	fields["protocol"] = slice[9]
+	fields["NFFOrDash"] = slice[10]
+	fields["srcIp"] = slice[11]
+	fields["srcPort"] = slice[12]
+	fields["dstIp"] = slice[13]
+	fields["dstPort"] = slice[14]
+	fields["octProto"] = slice[16]
+	fields["isInput"] = slice[18]
+	fields["isSlowpath"] = slice[20]
+	fields["hexFlegs"] = slice[22]
+	fields["invalidOrDash"] = slice[24]
+	fields["tcpflags"] = slice[25]
+	fields["rsvd"] = slice[27]
+	
+	if slice.len > 28{
+		fields["dur"] = [29]
+		fields["pkts"] = [31]
+		fields["bytes"] = [33]
+	}
+
+
 	serializedEvent, err := json.Marshal(&fields)
 	if err != nil {
 		out.log.Error("Serialization error: ", err)
