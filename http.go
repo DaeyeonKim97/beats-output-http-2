@@ -5,7 +5,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/DaeyeonKim97/beats-output-http-2/resolver"
+	"github.com/DaeyeonKim97/beats-output-http-2/v1/resolver"
 	"github.com/elastic/beats/v7/libbeat/beat"
 	"github.com/elastic/beats/v7/libbeat/common"
 	"github.com/elastic/beats/v7/libbeat/logp"
