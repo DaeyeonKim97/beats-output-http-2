@@ -1,4 +1,4 @@
-module github.com/DaeyeonKim97/beats-output-http-2
+module github.com/DaeyeonKim97/beats-output-http-2/v1
 
 go 1.18
 
