@@ -180,7 +180,12 @@ func (out *httpOutput) serializeOnlyFields(event *publisher.Event) ([]byte, erro
 	}
 	body := fields.GetValue("body")
 
-	slice := strings.Split(body, " ")
+	slice, err := strings.Split(body, " ")
+	
+	if err != nil {
+		out.log.Error("slice error: ", err)
+		return make([]byte, 0), err
+	}
 
 	fields["ifindex"] = slice[3]
 	fields["actionCode"] = slice[4]
