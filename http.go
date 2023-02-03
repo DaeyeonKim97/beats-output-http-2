@@ -178,9 +178,9 @@ func (out *httpOutput) serializeOnlyFields(event *publisher.Event) ([]byte, erro
 	for key, val := range out.conf.AddFields {
 		fields[key] = val
 	}
-	body := fields.GetValue("body")
+	body, err := fields.GetValue("body")
 
-	slice, err := strings.Split(body, " ")
+	slice := strings.Split(body, " ")
 	
 	if err != nil {
 		out.log.Error("slice error: ", err)
