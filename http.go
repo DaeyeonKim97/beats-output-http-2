@@ -197,18 +197,18 @@ func (out *httpOutput) serializeOnlyFields(event *publisher.Event) ([]byte, erro
 	fields["srcPort"] = slice[12]
 	fields["dstIp"] = slice[13]
 	fields["dstPort"] = slice[14]
-	fields["octProto"] = slice[16]
-	fields["isInput"] = slice[18]
-	fields["isSlowpath"] = slice[20]
-	fields["hexFlegs"] = slice[22]
-	fields["invalidOrDash"] = slice[24]
-	fields["tcpflags"] = slice[25]
-	fields["rsvd"] = slice[27]
+	fields["octProto"] = slice[17]
+	fields["isInput"] = slice[19]
+	fields["isSlowpath"] = slice[21]
+	fields["hexFlegs"] = slice[23]
+	fields["invalidOrDash"] = slice[25]
+	fields["tcpflags"] = slice[26]
+	fields["rsvd"] = slice[28]
 
-	if len(slice) > 28{
-		fields["dur"] = slice[29]
-		fields["pkts"] = slice[31]
-		fields["bytes"] = slice[33]
+	if len(slice) > 29{
+		fields["dur"] = slice[30]
+		fields["pkts"] = slice[32]
+		fields["bytes"] = slice[34]
 	}
 
 
