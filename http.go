@@ -120,6 +120,7 @@ func (out *httpOutput) init(beat beat.Info, c config) error {
 	out.reqPool = sync.Pool{
 		New: func() interface{} {
 			req, err := http.NewRequest("POST", out.conf.URL, nil)
+			req.Header.Add("Content-Type":"application/json")
 			if err != nil {
 				return err
 			}
