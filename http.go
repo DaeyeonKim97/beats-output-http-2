@@ -264,7 +264,7 @@ func (out *httpOutput) Publish(_ context.Context, batch publisher.Batch) error {
 				out.log.Warnf("Writing event to http failed with: %+v", err)
 			}
 
-			batch.RetryEvents(events)
+			//batch.RetryEvents(events)
 			st.Failed(len(events))
 			return nil
 		}
